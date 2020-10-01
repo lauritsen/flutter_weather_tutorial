@@ -10,12 +10,17 @@ import 'package:screen/screen.dart';
 import 'blocs/blocs.dart';
 
 void main() {
-  Bloc.observer = SimpleBlocObserver();
-
   final WeatherRepository weatherRepository = WeatherRepository(
       weatherApiClient: WeatherApiClient(httpClient: http.Client()));
 
-  runApp(App(weatherRepository: weatherRepository));
+  Bloc.observer = SimpleBlocObserver();
+
+  runApp(
+    BlocProvider(
+      create: (context) => ThemeBloc(),
+      child: App(weatherRepository: weatherRepository),
+    ),
+  );
 }
 
 class App extends StatelessWidget {
@@ -28,12 +33,16 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Screen.keepOn(true);
-    return MaterialApp(
-      title: 'Flutter Weather',
-      home: BlocProvider(
-          create: (context) =>
-              WeatherBloc(weatherRepository: weatherRepository),
-          child: Weather()),
+    return BlocBuilder<ThemeBloc, ThemeState>(
+      builder: (context, themeState) {
+        return MaterialApp(
+          title: 'Flutter Weather',
+          home: BlocProvider(
+              create: (context) =>
+                  WeatherBloc(weatherRepository: weatherRepository),
+              child: Weather()),
+        );
+      },
     );
   }
 }
