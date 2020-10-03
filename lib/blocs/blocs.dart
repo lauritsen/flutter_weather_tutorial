@@ -5,3 +5,7 @@ export 'weather_bloc.dart';
 export 'theme_event.dart';
 export 'theme_state.dart';
 export 'theme_bloc.dart';
+
+export 'settings_event.dart';
+export 'settings_state.dart';
+export 'settings_bloc.dart';

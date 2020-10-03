@@ -16,8 +16,15 @@ void main() {
   Bloc.observer = SimpleBlocObserver();
 
   runApp(
-    BlocProvider<ThemeBloc>(
-      create: (context) => ThemeBloc(),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider<ThemeBloc>(
+          create: (context) => ThemeBloc(),
+        ),
+        BlocProvider<SettingsBloc>(
+          create: (context) => SettingsBloc(),
+        ),
+      ],
       child: App(weatherRepository: weatherRepository),
     ),
   );
