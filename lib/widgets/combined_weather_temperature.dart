@@ -29,18 +29,18 @@ class CombinedWeatherTemperature extends StatelessWidget {
                 low: weather.minTemp,
               ),
             ),
-            Center(
-              child: Text(
-                weather.formattedCondition,
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.w200,
-                  color: Colors.white,
-                ),
-              ),
-            ),
           ],
-        )
+        ),
+        Center(
+          child: Text(
+            weather.formattedCondition,
+            style: TextStyle(
+              fontSize: 30,
+              fontWeight: FontWeight.w200,
+              color: Colors.white,
+            ),
+          ),
+        ),
       ],
     );
   }
