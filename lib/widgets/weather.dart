@@ -46,6 +46,9 @@ class _WeatherState extends State<Weather> {
           child: BlocConsumer<WeatherBloc, WeatherState>(
             listener: (context, state) {
               if (state is WeatherLoadSuccess) {
+                BlocProvider.of<ThemeBloc>(context).add(
+                  WeatherChanged(condition: state.weather.condition),
+                );
                 _refreshCompleter?.complete();
                 _refreshCompleter = Completer();
               }

@@ -16,7 +16,7 @@ void main() {
   Bloc.observer = SimpleBlocObserver();
 
   runApp(
-    BlocProvider(
+    BlocProvider<ThemeBloc>(
       create: (context) => ThemeBloc(),
       child: App(weatherRepository: weatherRepository),
     ),
@@ -37,6 +37,7 @@ class App extends StatelessWidget {
       builder: (context, themeState) {
         return MaterialApp(
           title: 'Flutter Weather',
+          theme: themeState.theme,
           home: BlocProvider(
               create: (context) =>
                   WeatherBloc(weatherRepository: weatherRepository),
