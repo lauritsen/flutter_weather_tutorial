@@ -1,6 +1,6 @@
 # flutter_weather
 
-A new Flutter project.
+Followed [this tutorial](https://bloclibrary.dev/#/flutterweathertutorial) on using [flutter_bloc](https://pub.dev/packages/flutter_bloc) and [bloc](https://pub.dev/packages/bloc) packages.
 
 ## Getting Started
 
